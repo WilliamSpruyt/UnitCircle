@@ -15,7 +15,7 @@ export default class UnitCircle extends React.Component {
     return (
       <svg
         version="1.1"
-        
+        onTouchStart={(e)=>{console.log(e);this.props.handleDotDown(e)}}
         xmlns="http://www.w3.org/2000/svg"
         width={this.props.width}
         height={this.props.height}
@@ -125,7 +125,35 @@ export default class UnitCircle extends React.Component {
         <path strokeWidth="1"
           stroke="black"
           fill="none" d={this.props.arc} />
-       
+
+         {this.props.angle.angleInDegrees%360>12 && <svg><line strokeWidth="1" stroke="black" 
+        
+        x1={this.props.width/2+((this.props.r/5)*this.props.angle.cosine)} 
+        y1={this.props.height/2-((this.props.r/5)*this.props.angle.sine)}    
+        x2={this.props.width/2+((this.props.r/6)*(Math.cos(this.props.angle.angle-0.3)))} 
+        y2={this.props.height/2-((this.props.r/6)*(Math.sin(this.props.angle.angle-0.3)))}  />
+
+        <line strokeWidth="1" stroke="black" 
+        
+        x1={this.props.width/2+((this.props.r/5)*this.props.angle.cosine)} 
+        y1={this.props.height/2-((this.props.r/5)*this.props.angle.sine)}    
+        x2={this.props.width/2+((this.props.r*0.23333)*(Math.cos(this.props.angle.angle-0.3)))} 
+        y2={this.props.height/2-((this.props.r*0.23333)*(Math.sin(this.props.angle.angle-0.3)))}  /></svg>}
+
+        {this.props.angle.angleInDegrees%360<-12 && <svg><line strokeWidth="1" stroke="black" 
+        
+        x1={this.props.width/2+((this.props.r/5)*this.props.angle.cosine)} 
+        y1={this.props.height/2-((this.props.r/5)*this.props.angle.sine)}    
+        x2={this.props.width/2+((this.props.r/6)*(Math.cos(this.props.angle.angle+0.3)))} 
+        y2={this.props.height/2-((this.props.r/6)*(Math.sin(this.props.angle.angle+0.3)))}  />
+
+        <line strokeWidth="1" stroke="black" 
+        
+        x1={this.props.width/2+((this.props.r/5)*this.props.angle.cosine)} 
+        y1={this.props.height/2-((this.props.r/5)*this.props.angle.sine)}    
+        x2={this.props.width/2+((this.props.r*0.23333)*(Math.cos(this.props.angle.angle+0.3)))} 
+        y2={this.props.height/2-((this.props.r*0.23333)*(Math.sin(this.props.angle.angle+0.3)))}  /></svg>}
+
         <line strokeWidth="3" stroke="black" 
         x1={this.props.width/2} 
         y1={this.props.height/2} 
@@ -194,11 +222,24 @@ export default class UnitCircle extends React.Component {
         y1={this.props.height/2} 
         x2={this.props.width/2+((this.props.r*this.props.angle.secant))*this.props.angle.cosine} 
         y2={this.props.height/2-((this.props.r*this.props.angle.secant)*this.props.angle.sine)}   />}
-        
+        svg><ellipse
+          strokeWidth="1"
+          stroke="none"
+          fill="pink"
+          onMouseDown={(e)=>{this.props.handleDotDown(e)}}
+          onTouchStart={(e)=>{console.log(e);this.props.handleDotDown(e)}} 
+          cx={this.props.width/2+(this.props.r*this.props.angle.cosine)} 
+          cy={this.props.height/2-(this.props.r*this.props.angle.sine)}
+          rx={3}
+          ry={3}
+           
+        />
         {(this.props.angle.angleInDegrees%30===0 || this.props.angle.angleInDegrees%45===0)?<svg><ellipse
           strokeWidth="1"
           stroke="none"
           fill="red"
+          onMouseDown={(e)=>{this.props.handleDotDown(e)}}
+          onTouchStart={(e)=>{console.log(e);this.props.handleDotDown(e)}}
           cx={this.props.width/2+(this.props.r*this.props.angle.cosine)} 
           cy={this.props.height/2-(this.props.r*this.props.angle.sine)}
           rx={3}
@@ -214,7 +255,8 @@ export default class UnitCircle extends React.Component {
           cy={this.props.height/2-(this.props.r*this.props.angle.sine)}
           rx={3}
           ry={3}
-           
+          onMouseDown={(e)=>{this.props.handleDotDown(e)}}
+          onTouchStart={(e)=>{this.props.handleDotDown(e)}}
         />
         
         

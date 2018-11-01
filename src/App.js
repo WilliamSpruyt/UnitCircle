@@ -21,11 +21,15 @@ class App extends Component {
       sigFigs:3,
       height:600,
       width:1200,
+      dragging:false,
+      startY:300
        
       
        
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleDotDown = this.handleDotDown.bind(this);
+    this.handleDotUp = this.handleDotUp.bind(this);
    
   }
   componentWillMount(){
@@ -35,9 +39,14 @@ class App extends Component {
 
     return (
       <div className="App" 
-      onWheel = {(e) => this.setState({ang:this.state.ang-((e.deltaY/53)*Math.PI/96)})}>
-         
-          <UnitCircle specialText={specialText} frac={math.fraction((this.state.ang/Math.PI))} huge={HUGE} arc={this.describeArc(this.state.width/2,this.state.height/2,this.state.radius/5,0,(this.state.ang/Math.PI)*180)} height={this.state.height} width={this.state.width} r={this.state.radius} angle={this.trigonomotizor(this.state.ang,EPSILON,HUGE)} />
+     
+      onWheel = {(e) => this.rotator(e)}
+      onMouseUp={this.handleDotUp}
+      onTouchEnd={this.handleDotUp}
+      onTouchMove={(e)=>this.touchdragger(e)}
+      onMouseMove ={(e)=>this.dragger(e)} >
+       
+          <UnitCircle handleDotDown={this.handleDotDown} specialText={specialText} frac={math.fraction((this.state.ang/Math.PI))} huge={HUGE} arc={this.describeArc(this.state.width/2,this.state.height/2,(this.state.radius/5),0,(this.state.ang/Math.PI)*180)} height={this.state.height} width={this.state.width} r={this.state.radius} angle={this.trigonomotizor(this.state.ang,EPSILON,HUGE)} />
        
         <TrigTable soSpecial={this.handleSpecial(this.state.ang)}specialAngles={specialAngles} specialText={specialText} frac={math.fraction((this.state.ang/Math.PI))} sigFigs={this.state.sigFigs} huge={HUGE} angle={this.trigonomotizor(this.state.ang,EPSILON,HUGE)} handleChange={this.handleChange}/>
          
@@ -56,11 +65,18 @@ class App extends Component {
   }
   
   describeArc(x, y, radius, endAngle, startAngle){
-  
-      var start = this.polarToCartesian(x, y, radius, endAngle);
-      var end = this.polarToCartesian(x, y, radius, startAngle);
-       
-      var largeArcFlag = (Math.sin(end.ang)>0)  ? "0" : "1";
+      
+      if(startAngle<0){
+      var end = this.polarToCartesian(x, y, radius, endAngle);
+      var start = this.polarToCartesian(x, y, radius, startAngle);
+      var largeArcFlag = (Math.sin(start.ang)<0)  ? "0" : "1";}
+      
+      else{ var start = this.polarToCartesian(x, y, radius, endAngle);
+        var end = this.polarToCartesian(x, y, radius, startAngle);
+        var largeArcFlag = (Math.sin(end.ang)>=0)  ? "0" : "1";}
+         
+      
+      
       var swapFlag = 0;
       var d = [
           "M", start.x, start.y, 
@@ -133,7 +149,33 @@ handleSpecial(ang){
   }
 return false
 }
+rotator(e){
+  this.setState({ang:this.state.ang-((e.deltaY/53)*Math.PI/96)})
 }
+handleDotDown(e){
+   
+  e.persist();
+  if(e.touches){
+  this.setState({dragging:true,startY:e.touches["0"].clientY})
+}
+else{this.setState({dragging:true,startY:e.clientY})}}
+handleDotUp(){
+
+  this.setState({dragging:false})
+}
+dragger(e){ 
+  e.persist();
+  if(this.state.dragging){
+  this.setState({ang:this.state.ang-((e.clientY-this.state.startY)*Math.PI/216),startY:e.clientY})}
+}
+touchdragger(e){
+  
+  if(this.state.dragging){
+    this.setState({ang:this.state.ang-((e.touches["0"].clientY-this.state.startY)*Math.PI/216),startY:e.touches["0"].clientY})}
+  }
+  
+}
+
 
 export default App;
 
