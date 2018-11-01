@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Unit Circle",
+  "name": "Interactive Unit Circle",
   "icons": [
     {
       "src": "favicon.ico",
