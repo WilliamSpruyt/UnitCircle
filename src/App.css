@@ -1,54 +1,56 @@
 .App {
   text-align: center;
-  font-family:"Times New Roman",Times,serif;
+  font-family: "Times New Roman", Times, serif;
   touch-action: none
 }
 
-.chart{
-   
-  font: italic  12px/30px Times, serif;
-  
+.chart {
+
+  font: italic 12px/30px Times, serif;
+
 }
 
-.trigTable{
+.trigTable {
   position: absolute;
-    left: 0px;
-    top: 0px;
-}
-.sin{
- background-color:red
-}
-.cos{
-  background-color:green
-}
-.tan{
-  background-color:blue
-}
-.csc{
-  background-color:brown
-}
-.sec{
-  background-color:orange
-}
-.cot{
-  background-color:purple}
+  left: 0px;
+  top: 0px;
+  height: 33%;
 
-.trigForm{
-  background-color:grey
 }
 
-.special{
-  background-color:gold
+.sin {
+  background-color: red
 }
 
-.infinity{
-  background-color:black;
-   
+.cos {
+  background-color: green
 }
 
+.tan {
+  background-color: blue
+}
 
- 
+.csc {
+  background-color: brown
+}
 
- 
+.sec {
+  background-color: orange
+}
 
-  
+.cot {
+  background-color: purple
+}
+
+.trigForm {
+  background-color: grey
+}
+
+.special {
+  background-color: gold
+}
+
+.infinity {
+  background-color: black;
+
+}
