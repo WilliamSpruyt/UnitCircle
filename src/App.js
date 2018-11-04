@@ -4,6 +4,7 @@ import "./App.css";
 import UnitCircle from "./unitCircle";
 import math from "mathjs";
 import TrigTable from "./trigTable";
+import TrigTablePlus from "./trigTablePlus";
 const EPSILON = 0.0001;
 const HUGE = 10000;
 const specialText = { pi: "\u03C0", radical: "\u221A", theta: "\u03B8" };
@@ -86,7 +87,7 @@ class App extends Component {
           angle={this.trigonomotizor(this.state.ang, EPSILON, HUGE)}
         />
 
-        <TrigTable
+        <TrigTablePlus
           soSpecial={this.handleSpecial(this.state.ang)}
           specialAngles={specialAngles}
           specialText={specialText}

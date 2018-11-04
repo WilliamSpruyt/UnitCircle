@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import "./App.css";
-import AnswerBox from './answerBox'
+ 
 export default class TrigTable extends React.Component {
   
    constructor(props) {
@@ -12,7 +12,7 @@ export default class TrigTable extends React.Component {
    }
   render() {
     return(
-<div className="trigTable"><table>
+<div ><table className="trigTable">
   <tbody>
     <tr><td>Radians </td>{(this.props.soSpecial)?<td><input step={0.001} className="special" type="Text"  onFocus={e => e.target.select()}  
     value=
@@ -48,7 +48,7 @@ export default class TrigTable extends React.Component {
     <td ><input className={(Math.abs(this.props.angle.cotangent)===this.props.huge)?"infinity":"trigForm"} type="Number" step={0.001}  onFocus={e => e.target.select()} value={this.props.angle.cotangent} onChange={(event)=>{this.props.handleChange(event,'cot')}}/></td> 
   </tr>
   <tr>
-  <td  ><i>sig. figs. {this.props.sigFigs}</i></td>
+  <td  classname='sigs'><i>sig. figs. {this.props.sigFigs}</i></td>
     <td ><input type="range" id="sigFigs" name="sigFigs" value={this.props.sigFigs}
      onChange={(event)=>{this.props.handleChange(event,'sf')}}      min="1" max="12" /></td> 
   </tr>

@@ -6,7 +6,7 @@
 
 .chart {
 
-  font: italic 12px/30px Times, serif;
+  font: italic 12/30 Times, serif;
 
 }
 
@@ -14,43 +14,66 @@
   position: absolute;
   left: 0px;
   top: 0px;
-  height: 33%;
+ flex-direction: row
+  
 
 }
 
+ 
+
 .sin {
-  background-color: red
+  background-color: red;
+   
 }
 
 .cos {
-  background-color: green
+  background-color: green;
+  
 }
 
 .tan {
-  background-color: blue
+  background-color: blue;
+  
 }
 
 .csc {
-  background-color: brown
+  background-color: brown;
+ 
 }
 
 .sec {
-  background-color: orange
+  background-color: orange;
+  
 }
 
 .cot {
-  background-color: purple
+  background-color: purple;
+   
 }
 
 .trigForm {
-  background-color: grey
+  background-color: grey;
+   
+
+    
 }
 
 .special {
-  background-color: gold
+  background-color: gold;
+   
 }
 
 .infinity {
   background-color: black;
-
+  
 }
+
+.sigs{
+  width:50%;
+}
+
+table{
+  float: left;
+}
+
+ 

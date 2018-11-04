@@ -216,7 +216,8 @@ export default class UnitCircle extends React.Component {
         y1={this.props.height/2} 
         x2={this.props.width/2+((this.props.r*this.props.angle.secant))*this.props.angle.cosine} 
         y2={this.props.height/2-((this.props.r*this.props.angle.secant)*this.props.angle.sine)}   />}
-
+        
+        
         {Math.abs(this.props.angle.secant)===this.props.huge &&<line strokeWidth="1" stroke="grey" 
         x1={this.props.width/2} 
         y1={this.props.height/2} 
@@ -259,9 +260,9 @@ export default class UnitCircle extends React.Component {
           onTouchStart={(e)=>{this.props.handleDotDown(e)}}
         />
         
+       
+         
         
-         
-         
         </svg>:<div> </div>
         }
          
