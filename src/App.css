@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   font-family: "Times New Roman", Times, serif;
+  
   touch-action: none
 }
 
@@ -12,6 +13,14 @@
 
 .trigTable {
   position: absolute;
+  left: 0%;
+  top: 80%;
+  
+  flex-direction: row
+}
+
+.thetaTable {
+  position: absolute;
   left: 0px;
   top: 0px;
 
@@ -19,11 +28,13 @@
 }
 
 
-
 .sin {
   background-color: red;
   border: 0px solid;
+   
 }
+
+ 
 
 .cos {
   background-color: green;
@@ -54,10 +65,10 @@
   background-color: lightgray;
   border: 0px solid;
   height: 20px;
-
+  width:100px;
   margin: 0%;
   border-spacing: 0px;
-
+  font-style: italic; 
 
 
 }
@@ -66,20 +77,19 @@
   background-color: gold;
   border: 0px solid;
   height: 20px;
-  width: 160px;
-
+  width:100px;
 }
 
 .infinity {
   background-color: black;
   border: 0px solid;
   height: 20px;
-  width: 160px;
+  width:100px;
 
 }
 
 .sigs {
-  width: 50%;
+  width:100px;
 }
 
 table {
@@ -104,4 +114,8 @@ tr {
 td {
   border: 0px solid;
   margin: 0px;
+}
+
+@media screen and (min-width: 480px) {
+   
 }

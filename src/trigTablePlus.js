@@ -10,8 +10,8 @@ export default class TrigTablePlus extends React.Component {
   componentDidMount() {}
   render() {
     return (
-      <div className="trigTable">
-        <table>
+      <div >
+        <table className="thetaTable">
           <tbody>
             <tr>
               <td>Radians </td>
@@ -64,11 +64,12 @@ export default class TrigTablePlus extends React.Component {
               </td>
             </tr>
             <tr>
-              <td classname="sigs">
-                <i>s.f. {this.props.sigFigs} </i>
+              <td >
+                <i >s.f. {this.props.sigFigs} </i>
               </td>
               <td>
                 <input
+                  className="sigs"
                   type="range"
                   id="sigFigs"
                   name="sigFigs"
@@ -83,12 +84,13 @@ export default class TrigTablePlus extends React.Component {
             </tr>
           </tbody>
         </table>
+        <div className='trigTable'>
         <table>
           <tbody>
             {this.props.soSpecial ? (
               <tr>
                 <td className="sin">Sine </td>
-                <td>
+                <td >
                   <input
                     className="special"
                     type="Text"
@@ -151,88 +153,142 @@ export default class TrigTablePlus extends React.Component {
               </tr>
             )}
 
-            <tr>
-              <td className="tan">Tangent </td>
-              <td>
-                <input
-                  className={
-                    Math.abs(this.props.angle.tangent) === this.props.huge
-                      ? "infinity"
-                      : "trigForm"
-                  }
-                  type="Number"
-                  step={0.001}
-                  onFocus={e => e.target.select()}
-                  value={this.props.angle.tangent}
-                  onChange={event => {
-                    this.props.handleChange(event, "tan");
-                  }}
-                />
-              </td>
-            </tr>
+           
+
+            {this.props.soSpecial ? (
+              <tr>
+                <td className="tan">Tangent </td>
+                <td>
+                  <input
+                    className="special"
+                    type="Text"
+                    onFocus={e => e.target.select()}
+                    value={this.props.soSpecial.tan}
+                    onChange={event => {
+                      this.props.handleChange(event, "tan");
+                    }}
+                  />
+                </td>
+              </tr>
+            ) : (
+              <tr>
+                <td className="tan">Tangent </td>
+                <td>
+                  <input
+                    className="trigForm"
+                    type="Number"
+                    step={0.001}
+                    onFocus={e => e.target.select()}
+                    value={this.props.angle.tangent}
+                    onChange={event => {
+                      this.props.handleChange(event, "tan");
+                    }}
+                  />
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
         <table>
           <tbody>
-            <tr>
-              <td className="csc">Cosecant </td>
-              <td>
-                <input
-                  className={
-                    Math.abs(this.props.angle.cosecant) === this.props.huge
-                      ? "infinity"
-                      : "trigForm"
-                  }
-                  type="Number"
-                  step={0.001}
-                  onFocus={e => e.target.select()}
-                  value={this.props.angle.cosecant}
-                  onChange={event => {
-                    this.props.handleChange(event, "csc");
-                  }}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td className="sec">Secant </td>
-              <td>
-                <input
-                  className={
-                    Math.abs(this.props.angle.secant) === this.props.huge
-                      ? "infinity"
-                      : "trigForm"
-                  }
-                  type="Number"
-                  step={0.001}
-                  onFocus={e => e.target.select()}
-                  value={this.props.angle.secant}
-                  onChange={event => {
-                    this.props.handleChange(event, "sec");
-                  }}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td className="cot">Cotangent </td>
-              <td>
-                <input
-                  className={
-                    Math.abs(this.props.angle.cotangent) === this.props.huge
-                      ? "infinity"
-                      : "trigForm"
-                  }
-                  type="Number"
-                  step={0.001}
-                  onFocus={e => e.target.select()}
-                  value={this.props.angle.cotangent}
-                  onChange={event => {
-                    this.props.handleChange(event, "cot");
-                  }}
-                />
-              </td>
-            </tr>
+          {this.props.soSpecial ? (
+              <tr>
+                <td className="csc">Cosecant </td>
+                <td>
+                  <input
+                    className="special"
+                    type="Text"
+                    onFocus={e => e.target.select()}
+                    value={this.props.soSpecial.cosec}
+                    onChange={event => {
+                      this.props.handleChange(event, "csc");
+                    }}
+                  />
+                </td>
+              </tr>
+            ) : (
+              <tr>
+                <td className="csc">Cosecant </td>
+                <td>
+                  <input
+                    className="trigForm"
+                    type="Number"
+                    step={0.001}
+                    onFocus={e => e.target.select()}
+                    value={this.props.angle.cosecant}
+                    onChange={event => {
+                      this.props.handleChange(event, "csc");
+                    }}
+                  />
+                </td>
+              </tr>
+            )}
+           {this.props.soSpecial ? (
+              <tr>
+                <td className="sec">Secant </td>
+                <td>
+                  <input
+                    className="special"
+                    type="Text"
+                    onFocus={e => e.target.select()}
+                    value={this.props.soSpecial.sec}
+                    onChange={event => {
+                      this.props.handleChange(event, "sec");
+                    }}
+                  />
+                </td>
+              </tr>
+            ) : (
+              <tr>
+                <td className="sec">Secant </td>
+                <td>
+                  <input
+                    className="trigForm"
+                    type="Number"
+                    step={0.001}
+                    onFocus={e => e.target.select()}
+                    value={this.props.angle.secant}
+                    onChange={event => {
+                      this.props.handleChange(event, "sec");
+                    }}
+                  />
+                </td>
+              </tr>
+            )}
+             {this.props.soSpecial ? (
+              <tr>
+                <td className="cot">Cotangent </td>
+                <td>
+                  <input
+                    className="special"
+                    type="Text"
+                    onFocus={e => e.target.select()}
+                    value={this.props.soSpecial.cot}
+                    onChange={event => {
+                      this.props.handleChange(event, "cot");
+                    }}
+                  />
+                </td>
+              </tr>
+            ) : (
+              <tr>
+                <td className="cot">Cotangent </td>
+                <td>
+                  <input
+                    className="trigForm"
+                    type="Number"
+                    step={0.001}
+                    onFocus={e => e.target.select()}
+                    value={this.props.angle.cotangent}
+                    onChange={event => {
+                      this.props.handleChange(event, "cot");
+                    }}
+                  />
+                </td>
+              </tr>
+            )}
           </tbody>
-        </table>
+        </table></div>
       </div>
     );
   }

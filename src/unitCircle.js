@@ -226,13 +226,13 @@ export default class UnitCircle extends React.Component {
         svg><ellipse
           strokeWidth="1"
           stroke="none"
-          fill="pink"
+          fill="dark gray"
           onMouseDown={(e)=>{this.props.handleDotDown(e)}}
           onTouchStart={(e)=>{console.log(e);this.props.handleDotDown(e)}} 
           cx={this.props.width/2+(this.props.r*this.props.angle.cosine)} 
           cy={this.props.height/2-(this.props.r*this.props.angle.sine)}
-          rx={3}
-          ry={3}
+          rx={2}
+          ry={2}
            
         />
         {(this.props.angle.angleInDegrees%30===0 || this.props.angle.angleInDegrees%45===0)?<svg><ellipse

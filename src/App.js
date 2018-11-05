@@ -7,33 +7,33 @@ import TrigTable from "./trigTable";
 import TrigTablePlus from "./trigTablePlus";
 const EPSILON = 0.0001;
 const HUGE = 10000;
-const specialText = { pi: "\u03C0", radical: "\u221A", theta: "\u03B8" };
+const specialText = { pi: "\u03C0", radical: "\u221A", theta: "\u03B8",infinity: "\u221E"  };
 const specialAngles = {
-  0: { sin: "0", cos: "1" },
-  30: { sin: "1/2", cos: specialText.radical + "3/2" },
-  45: { sin: specialText.radical + "2/2", cos: specialText.radical + "2/2" },
-  60: { sin: specialText.radical + "3/2", cos: "1/2" },
-  90: { sin: "1", cos: "0" },
-  120: { sin: specialText.radical + "3/2", cos: "-1/2" },
+  0: { sin: "0", cos: "1" ,tan:"0",cosec:specialText.infinity,sec:"1",cot:specialText.infinity},
+  30: { sin: "1/2", cos: specialText.radical + "3/2",tan:"1/"+specialText.radical+"3",cosec:"2",sec:"2/"+specialText.radical+"3",cot:specialText.radical+"3" },
+  45: { sin: specialText.radical + "2/2", cos: specialText.radical + "2/2",tan:"1" ,cosec:specialText.radical+"2",sec:specialText.radical+"2",cot:"1"},
+  60: { sin: specialText.radical + "3/2", cos: "1/2" ,tan:specialText.radical+"3",cosec:"2/"+specialText.radical+"3",sec:"2",cot:"1"+specialText.radical+"3"},
+  90: { sin: "1", cos: "0",tan:specialText.infinity,cosec:"1",sec:specialText.infinity,cot:"1" },
+  120: { sin: specialText.radical + "3/2", cos: "-1/2",tan:"-" +specialText.radical+"3",cosec:"2/"+specialText.radical+"3",sec:"-2",cot:"-1"+specialText.radical+"3" },
   135: {
     sin: specialText.radical + "2/2",
-    cos: "-" + specialText.radical + "2/2"
+    cos: "-" + specialText.radical + "2/2",tan:"-1" ,cosec:specialText.radical+"2",sec:"-" +specialText.radical+"2",cot:"-1"
   },
-  150: { sin: "1/2", cos: "-" + specialText.radical + "3/2" },
-  180: { sin: "0", cos: "-1" },
-  210: { sin: "-1/2", cos: "-" + specialText.radical + "3/2" },
+  150: { sin: "1/2", cos: "-" + specialText.radical + "3/2",tan:"-" +specialText.radical+"3/3",cosec:"2/"+specialText.radical+"3",sec:"-2",cot:"-"+specialText.radical+"3" },
+  180: { sin: "0", cos: "-1" ,tan:"0",cosec:specialText.infinity,sec:"1",cot:specialText.infinity},
+  210: { sin: "-1/2", cos: "-" + specialText.radical + "3/2",tan:"1/"+specialText.radical+"3",cosec:"2",sec:"2/"+specialText.radical+"3",cot:specialText.radical+"3" },
   225: {
     sin: "-" + specialText.radical + "2/2",
-    cos: "-" + specialText.radical + "2/2"
+    cos: "-" + specialText.radical + "2/2",tan:"1" ,cosec:specialText.radical+"2",sec:specialText.radical+"2",cot:"1"
   },
-  240: { cos: "-1/2", sin: "-" + specialText.radical + "3/2" },
-  270: { sin: "-1", cos: "0" },
-  300: { sin: "-" + specialText.radical + "3/2", cos: "-1/2" },
+  240: { cos: "-1/2", sin: "-" + specialText.radical + "3/2",tan:specialText.radical+"3",cosec:"2/"+specialText.radical+"3",sec:"2",cot:"1"+specialText.radical+"3" },
+  270: { sin: "-1", cos: "0",tan:specialText.infinity,cosec:"1",sec:specialText.infinity,cot:"1" },
+  300: { sin: "-" + specialText.radical + "3/2", cos: "-1/2",tan:specialText.radical+"3",cosec:"2/"+specialText.radical+"3",sec:"2",cot:"1"+specialText.radical+"3" },
   315: {
     sin: "-" + specialText.radical + "2/2",
-    cos: specialText.radical + "2/2"
+    cos: specialText.radical + "2/2",tan:"1" ,cosec:specialText.radical+"2",sec:specialText.radical+"2",cot:"1"
   },
-  330: { cos: specialText.radical + "3/2", sin: "-1/2" }
+  330: { cos: specialText.radical + "3/2", sin: "-1/2" ,tan:"1/"+specialText.radical+"3",cosec:"2",sec:"2/"+specialText.radical+"3",cot:specialText.radical+"3"}
 };
 
 class App extends Component {
@@ -203,6 +203,7 @@ class App extends Component {
   }
   handleSpecial(ang) {
     var degrees = this.ranger(ang * (180 / Math.PI));
+     
     if (specialAngles[Math.abs(degrees % 360)]) {
       if (degrees >= 0) {
         return specialAngles[degrees % 360];
@@ -230,7 +231,7 @@ class App extends Component {
     e.persist();
     if (this.state.dragging) {
       this.setState({
-        ang: this.state.ang - ((e.clientY - this.state.startY) * Math.PI) / 216,
+        ang: this.state.ang - ((e.clientY - this.state.startY) * Math.PI) / 240,
         startY: e.clientY
       });
     }
