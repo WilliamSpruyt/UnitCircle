@@ -1,22 +1,22 @@
 self.__precacheManifest = [
   {
-    "revision": "5d5d9eefa31e5e13a6610d9fa7a283bb",
-    "url": "/UnitCircle/static/media/logo.5d5d9eef.svg"
+    "revision": "f806287ff9d444b73289fc3982392781",
+    "url": "/UnitCircle/static/media/logo.f806287f.svg"
   },
   {
     "revision": "2d5d0a36fd0778741755",
     "url": "/UnitCircle/static/js/runtime~main.2d5d0a36.js"
   },
   {
-    "revision": "c31c5147c8702a9f62f6",
-    "url": "/UnitCircle/static/js/main.c31c5147.chunk.js"
+    "revision": "d4060d5ac26136f2299b",
+    "url": "/UnitCircle/static/js/main.d4060d5a.chunk.js"
   },
   {
     "revision": "879d2c4055669a763b00",
     "url": "/UnitCircle/static/js/1.879d2c40.chunk.js"
   },
   {
-    "revision": "c31c5147c8702a9f62f6",
+    "revision": "d4060d5ac26136f2299b",
     "url": "/UnitCircle/static/css/main.2f148a4a.chunk.css"
   },
   {
@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "/UnitCircle/static/css/1.fa630cba.chunk.css"
   },
   {
-    "revision": "0542793f8ae610b00cc17651c29dbc93",
+    "revision": "c7381c5beb87a1754c6d2ebc408e85a8",
     "url": "/UnitCircle/index.html"
   }
 ];
