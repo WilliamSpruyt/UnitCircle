@@ -37,6 +37,7 @@ export default class TrigTablePlus extends React.Component {
                 <td>
                   <input
                     step={0.001}
+                    onBlur={this.props.handleBlur}
                     className="trigForm"
                     type="Number"
                     onFocus={e => e.target.select()}
@@ -53,6 +54,7 @@ export default class TrigTablePlus extends React.Component {
               <td>
                 <input
                   className="trigForm"
+                  onBlur={this.props.handleBlur}
                   step={0.1}
                   type="Number"
                   onFocus={e => e.target.select()}
@@ -107,6 +109,7 @@ export default class TrigTablePlus extends React.Component {
                 <td className="sin">Sine </td>
                 <td>
                   <input
+                   onBlur={this.props.handleBlur}
                     className="trigForm"
                     type="Number"
                     step={0.001}
@@ -140,6 +143,7 @@ export default class TrigTablePlus extends React.Component {
                 <td className="cos">Cosine </td>
                 <td>
                   <input
+                  onBlur={this.props.handleBlur}
                     className="trigForm"
                     type="Number"
                     step={0.001}
@@ -160,7 +164,7 @@ export default class TrigTablePlus extends React.Component {
                 <td className="tan">Tangent </td>
                 <td>
                   <input
-                    className="special"
+                    className={(Math.abs(this.props.angle.cosine)>0.0001)?"special":"infinity"}
                     type="Text"
                     onFocus={e => e.target.select()}
                     value={this.props.soSpecial.tan}
@@ -176,10 +180,11 @@ export default class TrigTablePlus extends React.Component {
                 <td>
                   <input
                     className="trigForm"
+                    onBlur={this.props.handleBlur}
                     type="Number"
                     step={0.001}
                     onFocus={e => e.target.select()}
-                    value={this.props.angle.tangent}
+                    value={(Math.abs(this.props.angle.tangent)>=10000)?"undefined":this.props.angle.tangent}
                     onChange={event => {
                       this.props.handleChange(event, "tan");
                     }}
@@ -196,7 +201,7 @@ export default class TrigTablePlus extends React.Component {
                 <td className="csc">Cosecant </td>
                 <td>
                   <input
-                    className="special"
+                    className={(Math.abs(this.props.angle.sine)>0.0001)?"special":"infinity"}
                     type="Text"
                     onFocus={e => e.target.select()}
                     value={this.props.soSpecial.cosec}
@@ -212,10 +217,11 @@ export default class TrigTablePlus extends React.Component {
                 <td>
                   <input
                     className="trigForm"
+                    onBlur={this.props.handleBlur}
                     type="Number"
                     step={0.001}
                     onFocus={e => e.target.select()}
-                    value={this.props.angle.cosecant}
+                    value={(Math.abs(this.props.angle.cosecant)>=10000)?"undefined":this.props.angle.cosecant}
                     onChange={event => {
                       this.props.handleChange(event, "csc");
                     }}
@@ -228,7 +234,7 @@ export default class TrigTablePlus extends React.Component {
                 <td className="sec">Secant </td>
                 <td>
                   <input
-                    className="special"
+                   className={(Math.abs(this.props.angle.cosine)>0.0001)?"special":"infinity"}
                     type="Text"
                     onFocus={e => e.target.select()}
                     value={this.props.soSpecial.sec}
@@ -243,11 +249,12 @@ export default class TrigTablePlus extends React.Component {
                 <td className="sec">Secant </td>
                 <td>
                   <input
+                  onBlur={this.props.handleBlur}
                     className="trigForm"
                     type="Number"
                     step={0.001}
                     onFocus={e => e.target.select()}
-                    value={this.props.angle.secant}
+                    value={(Math.abs(this.props.angle.secant)>=10000)?"undefined":this.props.angle.secant}
                     onChange={event => {
                       this.props.handleChange(event, "sec");
                     }}
@@ -260,7 +267,7 @@ export default class TrigTablePlus extends React.Component {
                 <td className="cot">Cotangent </td>
                 <td>
                   <input
-                    className="special"
+                    className={(Math.abs(this.props.angle.sine)>0.0001)?"special":"infinity"}
                     type="Text"
                     onFocus={e => e.target.select()}
                     value={this.props.soSpecial.cot}
@@ -275,11 +282,12 @@ export default class TrigTablePlus extends React.Component {
                 <td className="cot">Cotangent </td>
                 <td>
                   <input
+                  onBlur={this.props.handleBlur}
                     className="trigForm"
                     type="Number"
                     step={0.001}
                     onFocus={e => e.target.select()}
-                    value={this.props.angle.cotangent}
+                    value={(Math.abs(this.props.angle.cotangent)>=10000)?"undefined":this.props.angle.cotangent}
                     onChange={event => {
                       this.props.handleChange(event, "cot");
                     }}

@@ -166,63 +166,48 @@ export default class UnitCircle extends React.Component {
         x2={this.props.width/2+(this.props.r*this.props.angle.cosine)} 
         y2={this.props.height/2}   />
         
+        
+        <line strokeWidth="2" stroke="orange" strokeOpacity={(Math.abs(this.props.angle.secant)<this.props.huge)?"1":"0.4"} 
+        x1={this.props.width/2} 
+        y1={this.props.height/2} 
+        x2={this.props.width/2+((this.props.r*this.props.angle.secant))} 
+        y2={this.props.height/2}   />
+        
         <line strokeWidth="3" stroke="green" 
         x1={this.props.width/2}  
         y1={this.props.height/2} 
         x2={this.props.width/2+(this.props.r*this.props.angle.cosine)} 
         y2={this.props.height/2}  />
 
-        {(Math.abs(this.props.angle.tangent)!==this.props.huge) && <line strokeWidth="3" stroke="blue" 
-        x1={this.props.width/2+(this.props.r)}  
-        y1={this.props.height/2} 
-        x2={this.props.width/2+(this.props.r)}
-        y2={this.props.height/2-(this.props.r*this.props.angle.tangent)}  />}
+        <line strokeWidth="3" strokeOpacity={(Math.abs(this.props.angle.tangent)<this.props.huge)?"1":"0.3"} stroke="blue" 
+         x1={this.props.width/2+(this.props.r*this.props.angle.cosine)} 
+         y1={this.props.height/2-(this.props.r*this.props.angle.sine)} 
+        x2={this.props.width/2+this.props.r*this.props.angle.secant}
+        y2={this.props.height/2}  />
 
-        {Math.abs(this.props.angle.tangent)===this.props.huge && <line strokeWidth="10" stroke="light blue" 
-        x1={this.props.width/2+(this.props.r)}  
-        y1={this.props.height/2} 
-        x2={this.props.width/2+(this.props.r)}
-        y2={this.props.height/2-(this.props.r*this.props.angle.tangent)}  />}
+         
+        <line strokeWidth="3" stroke="purple" strokeOpacity={(Math.abs(this.props.angle.cotangent)<this.props.huge)?"1":"0.3"} 
+         x1={this.props.width/2+(this.props.r*this.props.angle.cosine)} 
+         y1={this.props.height/2-(this.props.r*this.props.angle.sine)} 
+        x2={this.props.width/2}
+        y2={this.props.height/2-this.props.r*this.props.angle.cosecant}  />
 
-        {Math.abs(this.props.angle.cotangent)!==this.props.huge && <line strokeWidth="3" stroke="purple" 
-        x1={this.props.width/2}  
-        y1={this.props.height/2-(this.props.r)}
-        x2={this.props.width/2+(this.props.r*this.props.angle.cotangent)}
-        y2={this.props.height/2-(this.props.r)}  />}
-
-         {Math.abs(this.props.angle.cotangent)===this.props.huge && <line strokeWidth="10" stroke="violet" 
-        x1={this.props.width/2}  
-        y1={this.props.height/2-(this.props.r)}
-        x2={this.props.width/2+(this.props.r*this.props.angle.cotangent)}
-        y2={this.props.height/2-(this.props.r)}  />}
+         
         
         
-        {Math.abs(this.props.angle.cosecant)!==this.props.huge &&<line strokeWidth="3" stroke="brown" 
+        {<line strokeWidth="3" stroke="brown" strokeOpacity={(Math.abs(this.props.angle.cosecant)<this.props.huge)?"1":"0.3"} 
         x1={this.props.width/2} 
         y1={this.props.height/2} 
-        x2={this.props.width/2+(this.props.r*this.props.angle.cosecant)*this.props.angle.cosine} 
+        x2={this.props.width/2} 
         y2={this.props.height/2-((this.props.r*this.props.angle.cosecant)
-        *this.props.angle.sine)}   />}
+         )}   />}
 
-        {Math.abs(this.props.angle.cosecant)===this.props.huge &&<line strokeWidth="10" stroke="light brown" 
-        x1={this.props.width/2} 
-        y1={this.props.height/2} 
-        x2={this.props.width/2+(this.props.r*this.props.angle.cosecant)*this.props.angle.cosine} 
-        y2={this.props.height/2-((this.props.r*this.props.angle.cosecant)
-        *this.props.angle.sine)}   />}
-        
-        {Math.abs(this.props.angle.secant)!==this.props.huge &&<line strokeWidth="2" stroke="orange" 
-        x1={this.props.width/2} 
-        y1={this.props.height/2} 
-        x2={this.props.width/2+((this.props.r*this.props.angle.secant))*this.props.angle.cosine} 
-        y2={this.props.height/2-((this.props.r*this.props.angle.secant)*this.props.angle.sine)}   />}
+         
         
         
-        {Math.abs(this.props.angle.secant)===this.props.huge &&<line strokeWidth="10" stroke="grey" 
-        x1={this.props.width/2} 
-        y1={this.props.height/2} 
-        x2={this.props.width/2+((this.props.r*this.props.angle.secant))*this.props.angle.cosine} 
-        y2={this.props.height/2-((this.props.r*this.props.angle.secant)*this.props.angle.sine)}   />}
+        
+        
+           />}
         svg><ellipse
           strokeWidth="1"
           stroke="none"
